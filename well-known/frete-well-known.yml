@@ -1,0 +1,92 @@
+generated: '2026-08-16'
+method: probed
+source: direct HTTP probes of the Frete.com group hosts on 2026-08-16
+note: >-
+  Every /.well-known/ path probed across every Frete.com group host missed. No document
+  was served, so NO WellKnown or SecurityTxt pointer is wired into apis.yml — this file
+  records a measured absence, not a presence. Two hosts (www.fretebras.com.br and
+  api.fretepago.com.br) sit behind an Akamai edge that answers a 302 to an error page or
+  a 403 challenge for unknown paths, which is a soft-404 and is recorded as a miss.
+hosts:
+- host: https://www.frete.com
+  role: corporate site (group)
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+- host: https://www.fretebras.com.br
+  role: Fretebras freight marketplace
+  documents:
+  - path: /.well-known/security.txt
+    status: 302
+    note: 'Redirects cross-host to https://error-pages.fretebras.com.br/errors/400.html — a soft-404, not a document.'
+  - path: /.well-known/agent-card.json
+    status: 302
+    note: 'Same cross-host redirect to the 400 error page.'
+- host: https://cargox.com.br
+  role: CargoX Brasil (credit, insurance, tracking)
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /robots.txt
+    status: 404
+- host: https://blog.fretebras.com.br
+  role: Fretebras blog (WordPress)
+  documents:
+  - path: /robots.txt
+    status: 200
+    note: 'Serves a Yoast robots.txt with Crawl-delay: 10, Disallow empty, and Sitemap: https://blog.fretebras.com.br/sitemap_index.xml. Not a /.well-known/ document; recorded because it is the only machine-readable discovery file found anywhere in the group.'
+  - path: /llms.txt
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://api.fretepago.com.br
+  role: FretePago (fintech) API edge
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    note: 'Akamai Access Denied challenge; no document observable.'
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+summary:
+  hosts_probed: 5
+  documents_found: 0
+  security_txt: false
+  agent_card: false
+  api_catalog: false
+  openid_configuration: false

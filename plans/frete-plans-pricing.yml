@@ -1,0 +1,24 @@
+generated: '2026-08-16'
+method: searched
+source: https://www.fretebras.com.br/planos-e-precos-para-empresas
+docs:
+- https://www.fretebras.com.br/planos-e-precos-para-empresas
+- https://www.fretebras.com.br/planos-e-precos-15-dias-gratis
+plan_count: 0
+currency: BRL
+note: >-
+  Frete.com and its Fretebras brand market a paid subscription for shippers and carriers
+  ("Planos e Preços", monthly / quarterly / semiannual / annual terms, with a 15-day free
+  trial), and driver registration is free. But NO tier names, prices, quotas or limits are
+  published on either pricing page — both resolve to a lead-capture form asking for a
+  business email, name, phone and monthly freight volume, followed by a "talk to a
+  specialist" call to action. plan_count is therefore an honest 0: the plans exist, the
+  numbers are not public. There is no API pricing of any kind, because there is no public
+  API product.
+plans: []
+observations:
+- 'Driver / owner-operator registration on Fretebras is free; the paid subscription applies to shippers and carriers publishing loads.'
+- 'Billing terms advertised: mensal, trimestral, semestral, anual.'
+- 'A 15-day free trial is advertised in the pricing URL and CTA.'
+- 'Prices are quoted only after a sales conversation — no self-serve price list is published.'
+api_pricing: none

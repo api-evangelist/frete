@@ -1,0 +1,88 @@
+generated: '2026-08-16'
+method: searched
+source: >-
+  npm registry search + registry.npmjs.org metadata endpoints, plus PyPI, RubyGems,
+  crates.io, Packagist and pkg.go.dev lookups for fretebras / frete / fretepago /
+  cargox (2026-08-16).
+note: >-
+  Frete.com publishes NO API client library on any registry. The three first-party npm
+  packages below are internal engineering tooling — a local development-environment CLI
+  and two Create React App project templates — not SDKs for a Frete.com API. Because of
+  that, this artifact carries a `Packages` pointer only; NO `SDKs` pointer and NO `CLI`
+  pointer are wired into apis.yml, since neither an API client library nor an API command
+  line exists. All three packages were last published in 2021-2022 and appear dormant.
+packages:
+- language: javascript
+  registry: npm
+  name: freted
+  url: https://www.npmjs.com/package/freted
+  install: npm install -g freted
+  official: true
+  version: 0.2.4
+  published: '2021-02-19'
+  license: MIT
+  repository: https://github.com/fretebras/freted
+  kind: internal-tooling
+  note: >-
+    "FreteBras development CLI" — uses Docker and Git to resolve and start Fretebras
+    software projects on a developer's local machine. An internal environment manager,
+    not an API CLI. Last published 2021-02-19; the GitHub repo was last updated 2022-09.
+- language: javascript
+  registry: npm
+  name: cra-template-fretebras
+  url: https://www.npmjs.com/package/cra-template-fretebras
+  install: npx create-react-app my-app --template fretebras
+  official: true
+  version: 1.0.2
+  published: '2022-05-30'
+  license: MIT
+  repository: null
+  kind: internal-tooling
+  note: 'Create React App base template for frete.com React projects. Not an API client.'
+- language: javascript
+  registry: npm
+  name: cra-template-frete-boilerplate
+  url: https://www.npmjs.com/package/cra-template-frete-boilerplate
+  install: npx create-react-app my-app --template frete-boilerplate
+  official: true
+  version: 1.0.4
+  published: '2022-05-27'
+  license: MIT
+  repository: null
+  kind: internal-tooling
+  note: 'Create React App base template for frete.com React projects. Not an API client.'
+- language: go
+  registry: go-modules
+  name: github.com/fretebras/go-logger
+  url: https://pkg.go.dev/github.com/fretebras/go-logger
+  install: go get github.com/fretebras/go-logger
+  official: true
+  version: v0.1.7
+  published: '2024-01-02'
+  license: null
+  repository: https://github.com/fretebras/go-logger
+  kind: internal-tooling
+  note: >-
+    Generic structured logging library published from the Fretebras GitHub org. Not an
+    API client. Version and date read from proxy.golang.org/@v/v0.1.7.info.
+registries_checked:
+- registry: npm
+  result: 3 first-party packages found (all internal tooling; no API SDK)
+- registry: pypi
+  result: 'no first-party package (pypi.org/pypi/fretebras/json -> 404, fretepago -> 404)'
+- registry: rubygems
+  result: 'no first-party package (rubygems.org/api/v1/gems/fretebras.json -> 404)'
+- registry: crates.io
+  result: 'no first-party crate (search total 0)'
+- registry: packagist
+  result: no first-party package
+- registry: maven-central
+  result: 'no first-party artifact (solrsearch q=fretebras -> 0; q=frete -> 1 unrelated, br.com.caelum.stella:caelum-stella-frete)'
+- registry: nuget
+  result: 'no first-party package (azuresearch q=fretebras -> totalHits 0)'
+- registry: go-modules
+  result: >-
+    github.com/fretebras/go-logger is published from the org (proxy.golang.org -> 200,
+    latest v0.1.7, 2024-01-02) but is a generic logging library, not an API client.
+sdk_count: 0
+api_client_libraries: 0

@@ -1,0 +1,61 @@
+generated: '2026-08-16'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml hosts plus the Frete.com brand domains (fretebras.com.br, cargox.com.br, fretepago.com.br, rotasbrasil.com.br)
+hosts:
+- host: www.frete.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec  9 23:59:59 2026 GMT
+  hsts: null
+- host: www.fretebras.com.br
+  https: true
+  hsts: null
+  note: 'Akamai edge answered HTTP 403 (Access Denied) to the probe; headers beyond the challenge response were not observable.'
+- host: cargox.com.br
+  https: true
+  hsts: 'max-age=2628000'
+  note: 'HTTP 200; HSTS max-age 2628000 (~30 days), no includeSubDomains, no preload.'
+- host: api.fretepago.com.br
+  https: true
+  hsts: null
+  note: 'Akamai edge answered HTTP 403 (Access Denied) to the probe; no public API surface observable.'
+domains:
+- domain: frete.com
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: fretebras.com.br
+  dnssec: false
+  caa: []
+  spf: true
+  spf_record: 'v=spf1 include:_spf.google.com include:_spf.rdstation.com.br include:spf1.neoassist.com include:9020753.spf04.hubspotemail.net include:one.zoho.com include:mail.zendesk.com include:_spf.qp-mail.com -all'
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: cargox.com.br
+  dnssec: false
+  caa: []
+  spf: true
+  spf_record: 'v=spf1 include:_spf.google.com include:sendgrid.net include:_spf.salesforce.com include:_spf.qp-mail.mx include:one.zoho.com -all'
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: fretepago.com.br
+  dnssec: false
+  caa: []
+  spf: true
+  spf_record: 'v=spf1 include:_spf.google.com include:amazonses.com -all'
+  dmarc: true
+  dmarc_policy: reject
+- domain: rotasbrasil.com.br
+  dnssec: false
+  caa: []
+  spf: true
+  spf_record: 'v=spf1 include:websitewelcome.com -all'
+  dmarc: true
+  dmarc_policy: none
+findings:
+- 'Only the primary frete.com zone is DNSSEC-signed; none of the four Brazilian brand domains are.'
+- 'No CAA records are published on any of the five domains.'
+- 'SPF and DMARC are published everywhere; DMARC enforcement varies from p=reject (frete.com, fretepago.com.br) to p=none (rotasbrasil.com.br, the most recently acquired brand).'
+- 'HSTS was observable only on cargox.com.br (max-age ~30 days, no includeSubDomains, no preload). The Akamai-fronted hosts returned a 403 challenge to the probe.'
