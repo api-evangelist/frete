@@ -1,0 +1,18 @@
+{
+  "repo": "frete",
+  "feeds": [
+    {
+      "source": "https://www.frete.com/",
+      "error": "HTTPError"
+    },
+    {
+      "source": "https://blog.fretebras.com.br/",
+      "feed_url": "https://blog.fretebras.com.br/feed/",
+      "title": "",
+      "saved": 1,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 1,
+  "fetched": "2026-08-22T20:20:02Z"
+}
