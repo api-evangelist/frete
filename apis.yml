@@ -13,6 +13,17 @@ description: 'Frete.com is the Brazilian road-freight technology group formed in
   Frete.com does not currently publish a public developer portal or machine-readable
   API contract; the Fretebras integration API is reached through partner and ERP/TMS
   channels rather than an open reference.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://avatars.githubusercontent.com/u/94481101?v=4
 url: https://raw.githubusercontent.com/api-evangelist/frete/refs/heads/main/apis.yml
 x-type: company
