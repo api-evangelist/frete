@@ -55,7 +55,7 @@ tags:
 - Fintech
 - Brazil
 - Latin America
-- Machine-Learning
+- Machine Learning
 tags_raw:
 - Logistics
 - Freight
@@ -67,6 +67,7 @@ tags_raw:
 - Brazil
 - Latin America
 - Machine Learning
+- Machine-Learning
 apis: []
 maintainers:
 - FN: Kin Lane
